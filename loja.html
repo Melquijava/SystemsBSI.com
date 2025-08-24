@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loja — Systems_BSI</title>
+  <meta name="description" content="Loja oficial Systems_BSI — cursos, acesso e produtos da marca." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/loja.css"> <!-- opcional -->
+</head>
+
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- Header (mesmo do site) -->
+  <header class="site-header" id="topo" aria-label="Cabeçalho do site">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Systems_BSI Home">
+        <img src="assets/img/logo4k.jpg" alt="Systems_BSI Logo"
+             style="height:48px; margin-right:12px; border-radius:50%;">
+        <strong class="brand-text destaque">Systems<span class="accent">_BSI</span></strong>
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html#equipe">Equipe</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a class="btn btn-ghost" href="https://systems-bsi.catalog.yampi.io/" target="_blank" rel="noopener">Ver Loja Completa</a>
+          <a class="btn btn-primary" href="index.html" target="_blank" rel="noopener">Voltar</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== LOJA: HERO / PROMO / CONFIANÇA ===== -->
+<section class="shop-hero">
+  <div class="shop-hero__bg">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="container shop-hero__content">
+    <div class="shop-hero__eyebrow">Bem-vindo à</div>
+    <h1 class="shop-hero__title">Loja <span>Systems_BSI</span></h1>
+    <p class="shop-hero__subtitle">
+      Cursos, kits e produtos oficiais para acelerar sua jornada em
+      <strong>tecnologia</strong> e <strong>cibersegurança</strong>.
+    </p>
+
+    <div class="shop-hero__ctas">
+      <a href="#ofertas" class="btn btn-primary">Ver ofertas</a>
+      <a href="#produtos" class="btn btn-ghost">Explorar produtos</a>
+    </div>
+
+    <ul class="shop-hero__badges">
+      <li>💳 Pagamento <strong>seguro</strong></li>
+      <li>⚡ Acesso <strong>imediato</strong> aos cursos</li>
+      <li>👥 <strong>1k+</strong> na comunidade</li>
+      <li>🎧 Suporte no <strong>Discord</strong></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Faixa de destaques (scroll-snap, sem JS) -->
+<section id="ofertas" class="promo-strip">
+  <div class="container">
+    <div class="promo-strip__head">
+      <h2 class="display-sm">Destaques & Promoções</h2>
+      <p class="muted">Aproveite ofertas por tempo limitado.</p>
+    </div>
+
+    <div class="promo-strip__rail">
+      <!-- Exemplo de cards (use as capas dos seus produtos) -->
+      <!-- Acesso Vitalício GhostNode -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/acesso-vitalicio-ao-servidor-ghostnode/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/acesso vitalicio.png" alt="Acesso Vitalício ao servidor GhostNode" loading="lazy">
+          </a>
+          <span class="promo-card__badge">Promoção</span>
+          <div class="info">
+            <h3 class="title">Acesso Vitalício — GhostNode</h3>
+            <p class="brand">GhostNode</p>
+            <div class="price">
+              <span class="old">R$ 95,90</span>
+              <span class="new">R$ 37,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/acesso-vitalicio-ao-servidor-ghostnode/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+
+      <!-- Técnicas de Invasão -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/tecnicas-de-invasao-kali-linux/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/kali-linux.jpg" alt="Técnicas de Invasão — Kali Linux" loading="lazy">
+          </a>
+          <span class="promo-card__badge">Promoção</span>
+          <div class="info">
+            <h3 class="title">Técnicas de Invasão — Kali Linux</h3>
+            <p class="brand">GhostNode</p>
+            <div class="price">
+              <span class="old">R$ 219,90</span>
+              <span class="new">R$ 19,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/tecnicas-de-invasao-kali-linux/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+
+      <!-- Kit Hacker Ético -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/kit-curso-hacker-etico/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/kit-curso-hacker-etico-6843a14ecd985-large.webp" alt="Kit Curso Hacker Ético" loading="lazy">
+          </a>
+          <span class="promo-card__badge">Promoção</span>
+          <div class="info">
+            <h3 class="title">Kit Curso Linux — Hacker Ético</h3>
+            <p class="brand">Systems_BSI</p>
+            <div class="price">
+              <span class="old">R$ 459,90</span>
+              <span class="new">R$ 19,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/kit-curso-hacker-etico/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+
+      <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/drive-milionario-alcance-sua-liberdade-financeira/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/Drive milionário.png" alt="Drive Milionário — Alcance sua Liberdade Financeira" loading="lazy">
+          </a>
+          <span class="promo-card__badge">Promoção</span>
+          <div class="info">
+            <h3 class="title">Drive Milionário — Liberdade Financeira</h3>
+            <p class="brand">GhostNode</p>
+            <div class="price">
+              <span class="old">R$ 549,90</span>
+              <span class="new">R$ 59,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/drive-milionario-alcance-sua-liberdade-financeira/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+    </div>
+  </div>
+</section>
+
+<!-- Bloco comunidade -->
+<section class="community-cta">
+  <div class="container community-cta__box">
+    <div>
+      <h3>Faça parte da comunidade Systems_BSI</h3>
+      <p class="muted">Comprando na loja, você tem acesso ao nosso Discord com suporte, networking e novidades.</p>
+    </div>
+    <a class="btn btn-outline" href="https://discord.gg/k5JRQfJPBE" target="_blank" rel="noopener">Entrar no Discord</a>
+  </div>
+</section>
+
+
+  <!-- CURSOS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="display-xs">Cursos</h2>
+
+      <div class="shop-grid">
+        <!-- Pacote Supremo -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/pacote-supremo-de-estudos-concursos-e-carreiras-publicas/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/pacote-supremo-de-estudos-concursos-e-carreiras-publicas-686c82c588477-large.png" alt="Pacote Supremo de Estudos Concursos e Carreiras Públicas" loading="lazy">
+          </a>
+          <div class="info">
+            <h3 class="title">Pacote Supremo de Estudos Concursos e Carreiras Públicas</h3>
+            <p class="brand">Systems_BSI</p>
+            <div class="price">
+              <span class="old">R$ 279,90</span>
+              <span class="new">R$ 19,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/pacote-supremo-de-estudos-concursos-e-carreiras-publicas/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Curso Musical -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/curso-musical-completo-vocal-instrumental/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/musica.png" alt="Curso Musical Completo Vocal & Instrumental" loading="lazy">
+          </a>
+          <div class="info">
+            <h3 class="title">Curso Musical Completo — Vocal & Instrumental</h3>
+            <p class="brand">Systems_BSI</p>
+            <div class="price">
+              <span class="old">R$ 297,90</span>
+              <span class="new">R$ 19,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/curso-musical-completo-vocal-instrumental/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Técnicas de Invasão -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/tecnicas-de-invasao-kali-linux/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/kali-linux.jpg" alt="Técnicas de Invasão — Kali Linux" loading="lazy">
+          </a>
+          <div class="info">
+            <h3 class="title">Técnicas de Invasão — Kali Linux</h3>
+            <p class="brand">GhostNode</p>
+            <div class="price">
+              <span class="old">R$ 219,90</span>
+              <span class="new">R$ 19,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/tecnicas-de-invasao-kali-linux/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Kit Hacker Ético -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/kit-curso-hacker-etico/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/kit-curso-hacker-etico-6843a14ecd985-large.webp" alt="Kit Curso Hacker Ético" loading="lazy">
+          </a>
+          <div class="info">
+            <h3 class="title">Kit Curso Hacker Ético e Introdução a Cibersegurança</h3>
+            <p class="brand">Systems_BSI</p>
+            <div class="price">
+              <span class="old">R$ 459,90</span>
+              <span class="new">R$ 19,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/kit-curso-hacker-etico/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXCLUSIVO -->
+  <section class="section">
+    <div class="container">
+      <h2 class="display-xs">Exclusivo</h2>
+
+      <div class="shop-grid">
+        <!-- Drive Milionário -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/drive-milionario-alcance-sua-liberdade-financeira/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/Drive milionário.png" alt="Drive Milionário — Alcance sua Liberdade Financeira" loading="lazy">
+          </a>
+          <div class="info">
+            <h3 class="title">Drive Milionário — Liberdade Financeira</h3>
+            <p class="brand">GhostNode</p>
+            <div class="price">
+              <span class="old">R$ 549,90</span>
+              <span class="new">R$ 59,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/drive-milionario-alcance-sua-liberdade-financeira/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Acesso Vitalício GhostNode -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/acesso-vitalicio-ao-servidor-ghostnode/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/acesso vitalicio.png" alt="Acesso Vitalício ao servidor GhostNode" loading="lazy">
+          </a>
+          <div class="info">
+            <h3 class="title">Acesso Vitalício — GhostNode</h3>
+            <p class="brand">GhostNode</p>
+            <div class="price">
+              <span class="old">R$ 95,90</span>
+              <span class="new">R$ 37,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/acesso-vitalicio-ao-servidor-ghostnode/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARCA -->
+  <section class="section">
+    <div class="container">
+      <h2 class="display-xs">Marca</h2>
+
+      <div class="shop-grid">
+        <!-- Moletom GhostNode -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/moletom-premium-ghostnode/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/Moletom GhostNode.png" alt="Moletom Premium GhostNode" loading="lazy">
+          </a>
+          <div class="info">
+            <h3 class="title">Moletom Premium GhostNode</h3>
+            <p class="brand">GhostNode</p>
+            <div class="price">
+              <span class="old">R$ 299,90</span>
+              <span class="new">R$ 209,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/moletom-premium-ghostnode/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+
+        <!-- Moletom Systems_BSI -->
+        <article class="product glass">
+          <a class="thumb" href="https://systems-bsi.catalog.yampi.io/moletom-premium-systems-bsi/p" target="_blank" rel="noopener">
+            <img src="assets/img/loja/Moleton_Systems_2MB.jpg" alt="Moletom Premium Systems_BSI" loading="lazy">
+          </a>
+          <div class="info">
+            <h3 class="title">Moletom Premium Systems_BSI</h3>
+            <p class="brand">Systems_BSI</p>
+            <div class="price">
+              <span class="old">R$ 327,90</span>
+              <span class="new">R$ 229,90 <small>no Pix</small></span>
+            </div>
+            <a class="btn btn-primary w-full"
+               href="https://systems-bsi.catalog.yampi.io/moletom-premium-systems-bsi/p"
+               target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#topo" aria-label="Systems_BSI Home">
+          <img src="assets/img/logo4k.jpg" alt="Systems_BSI Logo"
+            style="height:48px; margin-right:12px; border-radius:50%;"><strong class="brand-text destaque">Systems<span
+              class="accent">_BSI</span></strong></a>
+        <p class="muted">© <span id="year"></span> Systems_BSI. Todos os direitos reservados.</p>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <ul class="footer-links">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/systems_bsi/" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="YouTube">YouTube</a></li>
+          <li><a href="#" aria-label="GitHub">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <form id="newsletter" class="newsletter" novalidate>
+          <input type="email" name="news_email" placeholder="seu@email.com" aria-label="E-mail para newsletter">
+          <button class="btn btn-outline" type="submit">Inscrever</button>
+        </form>
+      </div>
+    </div>
+    <div class="signature">
+      <p>Powered by <strong>RA Corporation</strong></p>
+    </div>
+  </footer>
+
+  <script>
+    // Atualiza ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* Garante respiro para o footer */
+.section:last-of-type { padding-bottom: 48px; }
+
+/* Subnav interna */
+.subnav {
+  margin-top: 12px;
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.subnav a{
+  padding:8px 12px; border-radius:10px; font-size:.92rem;
+  color:#d7e6ff; background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+.subnav a:hover{ background:rgba(0,153,255,.08); border-color:rgba(0,204,255,.22); }
+
+/* Seções detalhadas */
+.details .details-head{ margin-bottom:14px; }
+.details .details-head h2{ margin:0 0 6px; }
+.details .details-grid{
+  display:grid; grid-template-columns:2fr 2fr 1.3fr; gap:18px;
+}
+@media (max-width: 980px){ .details .details-grid{ grid-template-columns:1fr; } }
+
+.detail{
+  border-radius:16px; padding:16px;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:var(--shadow);
+}
+.detail h3{ margin:0 0 8px; font-size:1rem; }
+.bullet{ padding-left:18px; line-height:1.6; }
+.bullet li{ margin:6px 0; }
+.links{ line-height:1.7; }
+.links a{ color:#bfe3ff; }
+.links a:hover{ text-decoration:underline; }
+
+.page-intro{ padding-bottom: 10px; }
+
+.signature {
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  padding: 12px 0;
+  background: #060b16; /* tom escuro para separar do footer */
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.signature strong {
+  color: #00ccff; /* destaca RA Corporation com sua cor de marca */
+}
