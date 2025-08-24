@@ -226,3 +226,28 @@ document.addEventListener('DOMContentLoaded', () => {
     track.innerHTML += track.innerHTML; // duplica os 3 perfis
   }
 });
+
+const marquee = document.querySelector('.team-marquee');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+marquee.addEventListener('mousedown', (e) => {
+  isDown = true;
+  marquee.classList.add('active');
+  startX = e.pageX - marquee.offsetLeft;
+  scrollLeft = marquee.scrollLeft;
+});
+marquee.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+marquee.addEventListener('mouseup', () => {
+  isDown = false;
+});
+marquee.addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - marquee.offsetLeft;
+  const walk = (x - startX) * 2; // velocidade de arraste
+  marquee.scrollLeft = scrollLeft - walk;
+});
