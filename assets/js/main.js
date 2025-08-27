@@ -52,42 +52,7 @@
   }, { threshold: 0.12 });
 
   $$('.reveal, .stat').forEach(el => io.observe(el));
-
-  // Validação de formulários
-  const contact = $('#contact-form');
-  const showError = (id, msg) => {
-    const small = contact.querySelector(`.error[data-for="${id}"]`);
-    if (small) small.textContent = msg || '';
-  };
-  contact?.addEventListener('submit', (ev) => {
-    ev.preventDefault();
-    let ok = true;
-
-    const nome = $('#nome');
-    if (!nome.value.trim()) { showError('nome', 'Informe seu nome.'); ok = false; } else showError('nome');
-
-    const email = $('#email');
-    const mailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
-    if (!mailOk) { showError('email', 'E-mail inválido.'); ok = false; } else showError('email');
-
-    const msg = $('#mensagem');
-    if (msg.value.trim().length < 10) { showError('mensagem', 'Descreva melhor sua solicitação.'); ok = false; } else showError('mensagem');
-
-    if (ok) {
-      contact.querySelector('.form-success').hidden = false;
-      contact.reset();
-      setTimeout(() => contact.querySelector('.form-success').hidden = true, 4000);
-    }
-  });
-
-  // Newsletter simples
-  $('#newsletter')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = e.target.querySelector('input[type="email"]');
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
-    if (valid) { alert('Inscrição realizada com sucesso!'); input.value=''; }
-    else { alert('Digite um e-mail válido.'); }
-  });
+                                                                                                                                                                                                                                                 
 
   // Partículas do hero
   const canvas = $('#particles');
