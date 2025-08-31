@@ -270,7 +270,6 @@ body{
 
 
 /* Parceiros — marquee infinito e suave */
-
 /* Marquee infinito */
 .logo-marquee{
   --gap: 64px; /* espaço entre logos */
@@ -282,7 +281,7 @@ body{
   display: flex;
   gap: var(--gap);
   width: max-content;
-  animation: marquee var(--duration, 22s) linear infinite;
+  animation: marquee var(--duration, 30s) linear infinite;
   will-change: transform;
   padding: 10px 0;
 }
@@ -293,7 +292,7 @@ body{
 
 /* Logo sem fundo */
 .logo-marquee img{
-  max-height: 200px;
+  max-height: 150px;
   object-fit: contain;
   display: block;
   filter: brightness(0) invert(1); /* opcional p/ manter brancas em fundo escuro */
@@ -303,6 +302,7 @@ body{
 .logo-marquee img:hover{
   transform: scale(1.1);
 }
+
 
 @keyframes marquee{
   from { transform: translateX(0); }
