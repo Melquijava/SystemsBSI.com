@@ -272,7 +272,7 @@ body{
 /* Parceiros — marquee infinito e suave */
 /* Marquee infinito */
 .logo-marquee{
-  --gap: 64px; /* espaço entre logos */
+  --gap: 80px; /* espaço entre logos */
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
