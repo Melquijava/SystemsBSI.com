@@ -270,37 +270,40 @@ body{
 
 
 /* Parceiros — marquee infinito e suave */
+
+/* Marquee infinito */
 .logo-marquee{
-  --gap: 16px;
+  --gap: 64px; /* espaço entre logos */
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
+
 .logo-marquee .track{
   display: flex;
   gap: var(--gap);
-  width: max-content;                 /* largura cresce conforme os itens */
+  width: max-content;
   animation: marquee var(--duration, 22s) linear infinite;
   will-change: transform;
-  padding: 6px 0;
+  padding: 10px 0;
 }
-.logo-marquee:hover .track{           /* pausa ao passar o mouse */
+
+.logo-marquee:hover .track{ /* pausa ao passar mouse */
   animation-play-state: paused;
 }
-.logo-marquee .logo{
-  display: grid; place-items: center;
-  min-width: 180px; height: 84px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
-  font-weight: 800; letter-spacing: 1px;
-  color: #dfe9f7; text-decoration: none;
-  transition: transform .15s ease, border-color .15s ease, background-color .15s ease;
+
+/* Logo sem fundo */
+.logo-marquee img{
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1); /* opcional p/ manter brancas em fundo escuro */
+  transition: transform .2s ease;
 }
-.logo-marquee .logo:hover{
-  transform: translateY(-2px);
-  border-color: rgba(0,204,255,.25);
-  background: rgba(0,204,255,.06);
+
+.logo-marquee img:hover{
+  transform: scale(1.1);
 }
+
 
 @keyframes marquee{
   from { transform: translateX(0); }
