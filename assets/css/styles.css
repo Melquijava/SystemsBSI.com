@@ -304,7 +304,6 @@ body{
   transform: scale(1.1);
 }
 
-
 @keyframes marquee{
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); } /* desloca exatamente metade, pois duplicamos 1x via JS */
