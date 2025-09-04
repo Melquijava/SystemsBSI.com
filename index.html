@@ -58,9 +58,10 @@
             <span class="stat-value" data-count="13">0</span><span class="stat-label">eventos</span>
           </div>
           <div class="stat glass">
-            <span class="stat-value" data-count="7">0</span><span class="stat-label">parcerias</span>
+            <span id="contador" class="stat-value" data-count="0">0</span><span class="stat-label">visitas</span>
           </div>
         </div>
+
       </div>
       <div class="hero-media reveal">
         <div class="terminal-card neon-border">
@@ -737,6 +738,31 @@ x-systems: <span class="accent">bsi</span>
       <p>Powered by <strong>RA Corporation</strong></p>
     </div>
   </footer>
+  <script>
+    // Função para animar os números (contador crescente)
+    function animateCounter(element, target) {
+      let count = 0;
+      let increment = Math.ceil(target / 100); // Velocidade da animação
+      let interval = setInterval(() => {
+        count += increment;
+        if (count >= target) {
+          count = target;
+          clearInterval(interval);
+        }
+        element.innerText = count;
+      }, 20); // Tempo entre cada incremento (ms)
+    }
+
+    // Busca o número de visitas na API
+    fetch("https://api.countapi.xyz/hit/systems_bsi/site")
+      .then(res => res.json())
+      .then(data => {
+        const visitasEl = document.getElementById("contador");
+        visitasEl.setAttribute("data-count", data.value); // Atualiza o atributo
+        animateCounter(visitasEl, data.value); // Roda a animação
+      });
+  </script>
+
 </body>
 <script src="assets/js/main.js"></script>
 
