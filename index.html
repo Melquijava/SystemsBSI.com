@@ -52,7 +52,7 @@
 
         <div class="stat-row">
           <div class="stat glass">
-            <span class="stat-value" data-count="30089">0</span><span class="stat-label">seguidores</span>
+            <span class="stat-value" data-count="30592">0</span><span class="stat-label">seguidores</span>
           </div>
           <div class="stat glass">
             <span class="stat-value" data-count="13">0</span><span class="stat-label">eventos</span>
@@ -739,28 +739,38 @@ x-systems: <span class="accent">bsi</span>
     </div>
   </footer>
   <script>
-    // Função para animar os números (contador crescente)
-    function animateCounter(element, target) {
+    // Função que anima qualquer elemento com data-count
+    function animateCounter(el, target) {
       let count = 0;
-      let increment = Math.ceil(target / 100); // Velocidade da animação
+      let increment = Math.ceil(target / 100);
       let interval = setInterval(() => {
         count += increment;
         if (count >= target) {
           count = target;
           clearInterval(interval);
         }
-        element.innerText = count;
-      }, 20); // Tempo entre cada incremento (ms)
+        el.innerText = count;
+      }, 20);
     }
 
-    // Busca o número de visitas na API
-    fetch("https://api.countapi.xyz/hit/systems_bsi/site")
+    // Atualiza visitas a partir da API
+    fetch("https://api.countapi.xyz/hit/systemsbsi.com/visitas")
       .then(res => res.json())
       .then(data => {
         const visitasEl = document.getElementById("contador");
-        visitasEl.setAttribute("data-count", data.value); // Atualiza o atributo
-        animateCounter(visitasEl, data.value); // Roda a animação
+        visitasEl.setAttribute("data-count", data.value);
+
+        // anima só o de visitas
+        animateCounter(visitasEl, data.value);
       });
+
+    // Se quiser animar todos os outros já existentes (seguidores, eventos)
+    document.querySelectorAll(".stat-value").forEach(el => {
+      if (el.id !== "contador") { // evita rodar 2x no visitas
+        let target = parseInt(el.getAttribute("data-count"));
+        animateCounter(el, target);
+      }
+    });
   </script>
 
 </body>
