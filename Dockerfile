@@ -1,35 +1,28 @@
-# --- Etapa 1: Configuração do PHP-FPM ---
-# Use uma imagem oficial do PHP com FPM para processar os scripts
-FROM php:8.1-fpm-alpine AS php_base
+# Usa uma imagem oficial do PHP com FPM
+FROM php:8.1-fpm-alpine
 
-# Instalação de extensões do PHP (se necessário)
-RUN docker-php-ext-install pdo pdo_mysql
+# Instala o Nginx e outras dependências
+RUN apk add --no-cache nginx
 
 # Define o diretório de trabalho
 WORKDIR /var/www/html
 
-# Copia os arquivos do projeto para o diretório de trabalho
+# Copia os arquivos do seu projeto
 COPY . .
 
 # Garante permissão de escrita para o arquivo contador.txt
-# A permissão 777 é ampla, mas é comum para testes.
 RUN chmod 777 contador.txt
 
-# --- Etapa 2: Configuração do Nginx ---
-# Use uma imagem do Nginx para servir os arquivos estáticos
-FROM nginx:alpine
-
-# Remove o arquivo de configuração padrão do Nginx
+# Remove a configuração padrão do Nginx e copia a sua
 RUN rm /etc/nginx/conf.d/default.conf
-
-# Copia o arquivo de configuração do Nginx personalizado
 COPY nginx.conf /etc/nginx/conf.d/
 
-# Copia os arquivos da Etapa 1 para o diretório de serviço do Nginx
-COPY --from=php_base /var/www/html /usr/share/nginx/html
+# Copia o script de inicialização
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
-# Expõe a porta 80 para acesso externo
+# Expõe a porta 80
 EXPOSE 80
 
-# Inicia o Nginx em primeiro plano
-CMD ["nginx", "-g", "daemon off;"]
+# Define o script como o ponto de entrada do container
+CMD ["/usr/local/bin/start.sh"]
