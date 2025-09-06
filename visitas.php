@@ -1,22 +1,43 @@
 <?php
-// Arquivo onde vamos salvar o número de visitas
-$arquivo = "/tmp/contador.txt";
 
-// Se o arquivo não existir, cria com valor inicial 0
-if (!file_exists($arquivo)) {
-    file_put_contents($arquivo, "0");
+// Conecta ao banco de dados usando a variável de ambiente do Railway
+$dbUrl = getenv('MYSQL_URL');
+$pdo = new PDO($dbUrl);
+
+// Cria a tabela de visitas se ela não existir
+$pdo->exec("
+    CREATE TABLE IF NOT EXISTS visitas (
+        id INT PRIMARY KEY,
+        contagem INT
+    );
+");
+
+// Inicia uma transação para garantir que a leitura e a escrita sejam seguras
+$pdo->beginTransaction();
+
+// Lê a contagem atual
+$stmt = $pdo->prepare("SELECT contagem FROM visitas WHERE id = 1");
+$stmt->execute();
+$contagem = $stmt->fetchColumn();
+
+// Se a tabela estiver vazia, inicializa com 0
+if ($contagem === false) {
+    $contagem = 0;
+    $pdo->exec("INSERT INTO visitas (id, contagem) VALUES (1, 0)");
 }
 
-// L_ o n_mero atual
-$visitas = (int)file_get_contents($arquivo);
+// Incrementa a contagem
+$contagem++;
 
-// Soma +1
-$visitas++;
+// Atualiza a contagem no banco de dados
+$stmt = $pdo->prepare("UPDATE visitas SET contagem = ? WHERE id = 1");
+$stmt->execute([$contagem]);
 
-// Salva de volta
-file_put_contents($arquivo, $visitas);
+// Confirma a transação
+$pdo->commit();
 
-// Retorna em JSON
+// Retorna a contagem em JSON
 header('Content-Type: application/json');
-echo json_encode(array("visitas" => $visitas));
+echo json_encode(['visitas' => (int) $contagem]);
+
 ?>
