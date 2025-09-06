@@ -4,6 +4,9 @@ FROM php:8.1-fpm-alpine
 # Instala o Nginx e outras dependências
 RUN apk add --no-cache nginx
 
+# Instala o driver do MySQL para o PHP
+RUN docker-php-ext-install pdo_mysql
+
 # Define o diretório de trabalho
 WORKDIR /var/www/html
 
