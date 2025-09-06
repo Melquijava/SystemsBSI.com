@@ -754,12 +754,23 @@ x-systems: <span class="accent">bsi</span>
     }
 
     // Busca do backend PHP
+    // Busca do backend PHP
     fetch("https://systemsbsicom-production.up.railway.app/visitas.php")
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Erro na requisição: ' + res.statusText);
+        }
+        return res.json();
+      })
       .then(data => {
         const visitasEl = document.getElementById("contador");
-        visitasEl.setAttribute("data-count", data.visitas);
-        animateCounter(visitasEl, data.visitas);
+        if (visitasEl) { // Verificação para garantir que o elemento existe
+          visitasEl.setAttribute("data-count", data.visitas);
+          animateCounter(visitasEl, data.visitas);
+        }
+      })
+      .catch(error => {
+        console.error("Erro ao buscar o contador:", error);
       });
 
     // Anima os outros contadores estáticos

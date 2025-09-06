@@ -8,7 +8,7 @@ if (!file_exists($arquivo)) {
 }
 
 // Lê o número atual
-$visitas = (int) file_get_contents($arquivo);
+$visitas = (int)file_get_contents($arquivo);
 
 // Soma +1
 $visitas++;
@@ -18,5 +18,5 @@ file_put_contents($arquivo, $visitas);
 
 // Retorna em JSON
 header('Content-Type: application/json');
-echo json_encode(["visitas" => $visitas]);
+echo json_encode(array("visitas" => $visitas));
 ?>
