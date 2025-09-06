@@ -10,9 +10,6 @@ WORKDIR /var/www/html
 # Copia os arquivos do seu projeto
 COPY . .
 
-# Garante permissão de escrita para o arquivo contador.txt
-RUN chmod 777 contador.txt
-
 # Remove a configuração padrão do Nginx
 RUN rm -rf /etc/nginx/conf.d/
 # Copia a sua configuração completa para a pasta principal
