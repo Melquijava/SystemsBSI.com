@@ -2,7 +2,26 @@
 
 // Conecta ao banco de dados usando a variável de ambiente do Railway
 $dbUrl = getenv('MYSQL_URL');
-$pdo = new PDO($dbUrl);
+
+// Analisa a URL para extrair as informações de conexão
+$url_parts = parse_url($dbUrl);
+
+$host = $url_parts['host'];
+$dbname = ltrim($url_parts['path'], '/');
+$user = $url_parts['user'];
+$password = $url_parts['pass'];
+$port = $url_parts['port'];
+
+// Cria a string DSN (Data Source Name)
+$dsn = "mysql:host=$host;dbname=$dbname;port=$port";
+
+try {
+    // Conecta ao banco de dados
+    $pdo = new PDO($dsn, $user, $password);
+} catch (PDOException $e) {
+    die("Erro de conexão: " . $e->getMessage());
+}
+
 
 // Cria a tabela de visitas se ela não existir
 $pdo->exec("
