@@ -13,8 +13,7 @@ COPY . .
 # Garante permissão de escrita para o arquivo contador.txt
 RUN chmod 777 contador.txt
 
-# Remove a configuração padrão do Nginx e copia a sua
-RUN rm /etc/nginx/conf.d/default.conf
+# Copia sua configuração personalizada do Nginx, sem remover nada antes
 COPY nginx.conf /etc/nginx/conf.d/
 
 # Copia o script de inicialização
