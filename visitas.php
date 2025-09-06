@@ -1,16 +1,16 @@
 <?php
 
-// Conecta ao banco de dados usando as vari_veis de ambiente individuais
-$host = getenv('MYSQL_HOST');
-$dbname = getenv('MYSQL_DATABASE');
-$user = getenv('MYSQL_USER');
-$password = getenv('MYSQL_PASSWORD');
-$port = getenv('MYSQL_PORT');
+// Acessa as vari_veis de ambiente diretamente pela superglobal $_ENV
+$host = $_ENV['MYSQL_HOST'];
+$dbname = $_ENV['MYSQL_DATABASE'];
+$user = $_ENV['MYSQL_USER'];
+$password = $_ENV['MYSQL_PASSWORD'];
+$port = $_ENV['MYSQL_PORT'];
 
 // Se as vari_veis de ambiente n_o estiverem definidas, exibe um erro
 if (!$host || !$dbname || !$user || !$password || !$port) {
     http_response_code(500);
-    die("Erro: Algumas vari_veis de ambiente do MySQL n_o foram encontradas.");
+    die("Erro: Algumas variaveis de ambiente do MySQL n_o foram encontradas.");
 }
 
 // Cria a string DSN (Data Source Name)
@@ -58,7 +58,7 @@ try {
 
 } catch (PDOException $e) {
     http_response_code(500);
-    die("Erro de conex_o com o banco de dados: " . $e->getMessage());
+    die("Erro de conexao com o banco de dados: " . $e->getMessage());
 }
 
 ?>
