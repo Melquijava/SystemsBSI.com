@@ -1,13 +1,13 @@
 <?php
 // Arquivo onde vamos salvar o número de visitas
-$arquivo = "contador.txt";
+$arquivo = "/tmp/contador.txt";
 
 // Se o arquivo não existir, cria com valor inicial 0
 if (!file_exists($arquivo)) {
     file_put_contents($arquivo, "0");
 }
 
-// Lê o número atual
+// L_ o n_mero atual
 $visitas = (int)file_get_contents($arquivo);
 
 // Soma +1
