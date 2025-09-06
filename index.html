@@ -755,17 +755,14 @@ x-systems: <span class="accent">bsi</span>
 
     // Busca do backend PHP
     // Busca do backend PHP
-    fetch("https://systemsbsicom-production.up.railway.app/visitas.php")
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Erro na requisição: ' + res.statusText);
-        }
-        return res.json();
-      })
+    // Busca do backend PHP
+    fetch("/visitas.php")
+      .then(res => res.json())
       .then(data => {
         const visitasEl = document.getElementById("contador");
-        if (visitasEl) { // Verificação para garantir que o elemento existe
+        if (visitasEl) {
           visitasEl.setAttribute("data-count", data.visitas);
+          // Sua função animateCounter irá atualizar o valor visível
           animateCounter(visitasEl, data.visitas);
         }
       })
