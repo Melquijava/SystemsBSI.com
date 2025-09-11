@@ -1,7 +1,7 @@
 // Systems_BSI — Interações aprimoradas
 (() => {
-  const $ = (sel, ctx=document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
   // Menu mobile
   const toggle = $('.nav-toggle');
@@ -52,7 +52,7 @@
   }, { threshold: 0.12 });
 
   $$('.reveal, .stat').forEach(el => io.observe(el));
-                                                                                                                                                                                                                                                 
+
 
   // Partículas do hero
   const canvas = $('#particles');
@@ -74,34 +74,34 @@
       }));
     };
     const draw = () => {
-      ctx.clearRect(0,0,w,h);
+      ctx.clearRect(0, 0, w, h);
       // gradient background glow subtle
-      const grad = ctx.createRadialGradient(w*0.8, h*0.1, 20, w*0.8, h*0.1, Math.max(w,h));
+      const grad = ctx.createRadialGradient(w * 0.8, h * 0.1, 20, w * 0.8, h * 0.1, Math.max(w, h));
       grad.addColorStop(0, 'rgba(0,204,255,0.08)');
       grad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = grad; ctx.fillRect(0,0,w,h);
+      ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
 
-      for (let i=0;i<particles.length;i++){
+      for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.x += p.vx; p.y += p.vy;
-        if (p.x<0||p.x>w) p.vx*=-1;
-        if (p.y<0||p.y>h) p.vy*=-1;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
 
         ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(173, 235, 255, .7)';
         ctx.fill();
       }
       // lines
-      for (let i=0;i<particles.length;i++){
-        for (let j=i+1;j<particles.length;j++){
-          const a=particles[i], b=particles[j];
-          const dx=a.x-b.x, dy=a.y-b.y, d=Math.hypot(dx,dy);
-          if (d<110){
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy);
+          if (d < 110) {
             ctx.strokeStyle = 'rgba(77, 230, 255, .12)';
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+            ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
           }
         }
       }
@@ -134,7 +134,7 @@
 // ==========================
 // Marquee infinito de parceiros
 // ==========================
-(function(){
+(function () {
   const marquee = document.querySelector('.logo-marquee');
   if (!marquee) return;
 
@@ -146,7 +146,7 @@
     const items = Array.from(track.children);
     if (!items.length) return 0;
     const widths = items.map(el => el.getBoundingClientRect().width);
-    return widths.reduce((a,b)=>a+b,0) + GAP * (items.length - 1);
+    return widths.reduce((a, b) => a + b, 0) + GAP * (items.length - 1);
   };
 
   const fill = () => {
@@ -154,7 +154,7 @@
     let tw = totalWidth();
     const original = Array.from(track.children);
 
-    while (tw < containerW * 2 && original.length){
+    while (tw < containerW * 2 && original.length) {
       original.forEach(node => {
         const clone = node.cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
@@ -210,9 +210,45 @@ marquee.addEventListener('mouseup', () => {
   isDown = false;
 });
 marquee.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
+  if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - marquee.offsetLeft;
   const walk = (x - startX) * 2; // velocidade de arraste
   marquee.scrollLeft = scrollLeft - walk;
+});
+
+// --- Lógica para o Pop-up de Anúncio ---
+
+// Espera o conteúdo da página carregar completamente
+window.addEventListener('load', function () {
+
+  // Seleciona os elementos do pop-up
+  const popupOverlay = document.getElementById('popup-overlay');
+  const closePopupButton = document.getElementById('close-popup');
+
+  // Função para mostrar o pop-up
+  function showPopup() {
+    popupOverlay.classList.add('active');
+  }
+
+  // Função para esconder o pop-up
+  function hidePopup() {
+    popupOverlay.classList.remove('active');
+  }
+
+  // --- CONTROLE DE EXIBIÇÃO ---
+  // Mostra o pop-up após 3 segundos (3000 milissegundos)
+  setTimeout(showPopup, 3000);
+
+  // --- EVENTOS ---
+  // Fecha o pop-up ao clicar no botão "X"
+  closePopupButton.addEventListener('click', hidePopup);
+
+  // Opcional: Fecha o pop-up ao clicar fora da imagem (no overlay)
+  popupOverlay.addEventListener('click', function (event) {
+    if (event.target === popupOverlay) {
+      hidePopup();
+    }
+  });
+
 });
