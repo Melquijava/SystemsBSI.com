@@ -711,7 +711,7 @@ x-systems: <span class="accent">bsi</span>
         <ul class="footer-links">
           <li><a href="#sobre">Sobre</a></li>
           <li><a href="#recursos">Recursos</a></li>
-          <li><a href="#agenda">Agenda</a></li>
+          <li><a href="#agenda">Eventos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </div>
@@ -724,13 +724,13 @@ x-systems: <span class="accent">bsi</span>
           <li><a href="https://www.threads.com/@systems_bsi" aria-label="Threads">Threads</a></li>
         </ul>
       </div>
-      <div>
+      <!--div>
         <h4>Newsletter</h4>
         <form id="newsletter" class="newsletter" novalidate>
           <input type="email" name="news_email" placeholder="seu@email.com" aria-label="E-mail para newsletter">
           <button class="btn btn-outline" type="submit">Inscrever</button>
         </form>
-      </div>
+      </div-->
     </div>
     <div class="signature">
       <p>Powered by <strong>RA Corporation</strong></p>
@@ -753,7 +753,7 @@ x-systems: <span class="accent">bsi</span>
     }
 
     // Busca do backend PHP
-    fetch("/visitas.php")
+    fetch("./visitas.php")
       .then(res => res.json())
       .then(data => {
         const visitasEl = document.getElementById("contador");
