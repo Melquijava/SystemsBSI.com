@@ -26,7 +26,7 @@ async function sendMessage() {
     input.value = "";
 
     try {      
-        const resposta = await fetch("https://systemsbsicom-production.up.railway.app/api/chat", {
+        const resposta = await fetch("https://backend-systems.up.railway.app/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: userText })
