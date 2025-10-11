@@ -1,9 +1,9 @@
 <?php
 
-$arquivo = "/mnt/data/contador.txt";
+$arquivo = "/data/contador.txt";
 
 if (!file_exists($arquivo)) {
-    file_put_contents($arquivo, "0");
+    file_put_contents($arquivo, "912");
 }
 
 $visitas = (int)file_get_contents($arquivo);
