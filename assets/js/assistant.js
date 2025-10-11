@@ -25,8 +25,8 @@ async function sendMessage() {
     appendMessage("Você: " + userText, "user");
     input.value = "";
 
-    try {
-        const resposta = await fetch("https://seu-dominio-production.up.railway.app/api/chat", {
+    try {      
+        const resposta = await fetch("https://systemsbsicom-production.up.railway.app/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: userText })
