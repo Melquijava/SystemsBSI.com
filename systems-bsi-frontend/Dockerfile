@@ -1,26 +1,28 @@
-# Usa uma imagem oficial do PHP com FPM
+# Conteúdo para systems-bsi-frontend/Dockerfile
+
 FROM php:8.1-fpm-alpine
 
-# Instala o Nginx e outras dependências
-RUN apk add --no-cache nginx
+# Instala o Nginx
+RUN apk update && apk add --no-cache nginx
 
-# Define o diretório de trabalho
-WORKDIR /var/www/html
+# Remove a configuração padrão do Nginx para evitar conflitos
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Copia os arquivos do seu projeto
-COPY . .
-
-# Remove a configuração padrão do Nginx
-RUN rm -rf /etc/nginx/conf.d/
-# Copia a sua configuração completa para a pasta principal
-COPY nginx.conf /etc/nginx/
+# Copia nossa configuração de site personalizada para o local correto
+COPY site.conf /etc/nginx/conf.d/
 
 # Copia o script de inicialização
 COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-# Expõe a porta 80
+# Define o diretório de trabalho
+WORKDIR /var/www/html
+
+# Copia todos os arquivos do site para o diretório de trabalho
+COPY . .
+
+# Expõe a porta que o Nginx vai usar
 EXPOSE 80
 
-# Define o script como o ponto de entrada do container
-CMD ["/usr/local/bin/start.sh"]
+# Define o script que será executado quando o container iniciar
+CMD ["start.sh"]
