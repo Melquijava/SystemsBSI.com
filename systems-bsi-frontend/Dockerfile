@@ -6,7 +6,7 @@ FROM php:8.1-fpm-alpine
 RUN apk update && apk add --no-cache nginx
 
 # Remove a configuração padrão do Nginx para evitar conflitos
-RUN rm /etc/nginx/conf.d/default.conf
+RUN rm -f /etc/nginx/conf.d/default.conf
 
 # Copia nossa configuração de site personalizada para o local correto
 COPY site.conf /etc/nginx/conf.d/
