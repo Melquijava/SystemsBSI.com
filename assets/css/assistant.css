@@ -1,0 +1,132 @@
+#assistant-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Botão com mascote */
+#assistant-button {
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 15px rgba(0, 200, 255, 0.7));
+}
+
+#assistant-button:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 25px rgba(0, 200, 255, 1));
+}
+
+#assistant-button img {
+  width: 100%;
+  height: auto;
+  max-width: 90px;
+}
+
+/* Janela de chat */
+#assistant-chat {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 110px;
+  right: 0;
+  width: 320px;
+  height: 420px;
+  background: #0d111c;
+  border: 1px solid #00d8ff2f;
+  box-shadow: 0 0 25px rgba(0, 200, 255, 0.4);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Cabeçalho */
+#assistant-header {
+  background: #0a0f1a;
+  color: #00d8ff;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#assistant-close {
+  background: none;
+  border: none;
+  color: #00d8ff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Mensagens */
+#assistant-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  color: #fff;
+  font-size: 14px;
+  background: #101522;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.user {
+  text-align: right;
+  color: #00d8ff;
+}
+
+.bot {
+  text-align: left;
+  color: #e0e0e0;
+}
+
+/* Campo de entrada */
+#assistant-input-area {
+  display: flex;
+  border-top: 1px solid #1a2336;
+  background: #0d1320;
+}
+
+#assistant-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  outline: none;
+}
+
+#assistant-send {
+  background: #00d8ff;
+  color: #0a0f1a;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#assistant-send:hover {
+  background: #0095cc;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  #assistant-button {
+    width: 70px;
+    height: 70px;
+  }
+
+  #assistant-chat {
+    width: 280px;
+    height: 380px;
+  }
+}

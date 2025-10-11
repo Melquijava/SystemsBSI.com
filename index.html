@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/assistant.css">
+  <script src="assets/js/assistant.js" defer></script>
 </head>
 
 <body>
@@ -22,7 +24,7 @@
       <button id="close-popup" class="close-popup-btn">&times;</button>
     </div>
   </div>
-  
+
   <div class="noise" aria-hidden="true"></div>
   <header class="site-header" id="topo" aria-label="Cabeçalho do site">
     <div class="container nav-wrap">
@@ -130,7 +132,7 @@ x-systems: <span class="accent">bsi</span>
   </section>
 
 
-    <!-- Agenda -->
+  <!-- Agenda -->
   <section id="agenda" class="section">
     <div class="container">
       <h2 class="center display-sm">Eventos</h2>
@@ -153,9 +155,9 @@ x-systems: <span class="accent">bsi</span>
           <img src="assets/img/aulaDeCriaçãodeBots.png" alt="Aula Criação de Bots no Discord" class="event-img">
           <time datetime="2025-09-14">Todo Domingo às 20h</time>
           <h3>Aula Criação de Bots — Discord</h3>
-          <p>Aula prática de Criação de Bots ministrada pelo CEO Melquisedeque no palco de aula do servidor Systems_BSI.</p>
-          <a class="btn btn-ghost sm" href="https://discord.gg/bvBVpwPR8K" target="_blank"
-            rel="noopener">
+          <p>Aula prática de Criação de Bots ministrada pelo CEO Melquisedeque no palco de aula do servidor Systems_BSI.
+          </p>
+          <a class="btn btn-ghost sm" href="https://discord.gg/bvBVpwPR8K" target="_blank" rel="noopener">
             Inscreva-se
           </a>
         </article>
@@ -165,7 +167,8 @@ x-systems: <span class="accent">bsi</span>
           <img src="assets/img/aulaDeAutomação.png" alt="Aula de Automação com N8N" class="event-img">
           <time datetime="2025-09-08">Em Breve...</time>
           <h3>Aula de Automação - N8N</h3>
-          <p>Aula prática de Automação ministrada pelo Diretor Operacional Pedro Maciente no palco de aula do servidor Systems_BSI.
+          <p>Aula prática de Automação ministrada pelo Diretor Operacional Pedro Maciente no palco de aula do servidor
+            Systems_BSI.
           </p>
           <a class="btn btn-ghost sm" href="https://discord.gg/bvBVpwPR8K" target="_blank" rel="noopener">
             Inscreva-se
@@ -643,6 +646,26 @@ x-systems: <span class="accent">bsi</span>
       </div>
     </div>
   </section>
+
+  <!-- PinguSys -->
+
+  <div id="assistant-container">
+    <div id="assistant-button">
+      <img src="assets/img/pingusys.png" alt="PinguSys" />
+    </div>
+
+    <div id="assistant-chat">
+      <div id="assistant-header">
+        <span>💬 PinguSys - Assistente SystemsBSI</span>
+        <button id="assistant-close">×</button>
+      </div>
+      <div id="assistant-messages"></div>
+      <div id="assistant-input-area">
+        <input type="text" id="assistant-input" placeholder="Digite sua pergunta..." />
+        <button id="assistant-send">Enviar</button>
+      </div>
+    </div>
+  </div>
 
 
   <!-- Contato -->
