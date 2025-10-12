@@ -4,38 +4,49 @@ const closeBtn = document.getElementById("assistant-close");
 const sendBtn = document.getElementById("assistant-send");
 const input = document.getElementById("assistant-input");
 const messages = document.getElementById("assistant-messages");
-
 const newChatBtn = document.getElementById("assistant-new-chat");
-const emojiBtn = document.getElementById("assistant-emoji-btn"); 
+const emojiBtn = document.getElementById("assistant-emoji-btn");
 const attachBtn = document.getElementById("assistant-attach-btn");
 const fileInput = document.getElementById("assistant-file-input");
 
+
+const emojiPickerContainer = document.getElementById("emoji-picker-container");
 
 let attachedFile = null;
 
 
 button.addEventListener("click", () => { chat.style.display = "flex"; });
-closeBtn.addEventListener("click", () => { chat.style.display = "none"; });
-
-
-sendBtn.addEventListener("click", sendMessage);
-input.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") sendMessage();
+closeBtn.addEventListener("click", () => { 
+    chat.style.display = "none"; 
+    emojiPickerContainer.style.display = 'none'; 
 });
 
+sendBtn.addEventListener("click", sendMessage);
+input.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
 newChatBtn.addEventListener("click", () => {
     messages.innerHTML = ''; 
     attachedFile = null; 
     appendMessage("👋 Nova conversa iniciada!", "bot");
 });
+attachBtn.addEventListener("click", () => { fileInput.click(); });
+fileInput.addEventListener("change", handleFileSelection);
+
+const picker = new EmojiPicker.Picker();
+emojiPickerContainer.appendChild(picker);
 
 
-attachBtn.addEventListener("click", () => {
-    fileInput.click(); 
+emojiBtn.addEventListener('click', () => {
+  emojiPickerContainer.style.display = emojiPickerContainer.style.display === 'block' ? 'none' : 'block';
 });
 
 
-fileInput.addEventListener("change", (event) => {
+picker.addEventListener('emoji-click', event => {
+  input.value += event.detail.emoji.unicode;
+});
+
+
+
+function handleFileSelection(event) {
     const file = event.target.files[0];
     if (!file) return;
 
@@ -48,24 +59,21 @@ fileInput.addEventListener("change", (event) => {
         appendMessage(`Você enviou a imagem: ${file.name}`, "user", e.target.result);
     };
     reader.readAsDataURL(file);
-
     fileInput.value = "";
-});
+}
 
 async function sendMessage() {
+    emojiPickerContainer.style.display = 'none';
     const userText = input.value.trim();
-
     if (!userText && !attachedFile) return;
 
     if (userText) {
         appendMessage("Você: " + userText, "user");
     }
-    
     input.value = "";
 
     try {
         const thinkingMessage = appendMessage("PinguSys: Pensando...", "bot");
-      
         const requestBody = {
             message: userText,
             attachment: attachedFile ? attachedFile.base64 : null
@@ -82,7 +90,6 @@ async function sendMessage() {
         }
 
         const data = await response.json();
-        
         messages.removeChild(thinkingMessage);
         appendMessage("PinguSys: " + data.reply, "bot");
 
@@ -97,7 +104,6 @@ async function sendMessage() {
         attachedFile = null;
     }
 }
-
 
 function appendMessage(text, type, imageBase64 = null) {
     const div = document.createElement("div");

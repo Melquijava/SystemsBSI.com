@@ -1,4 +1,6 @@
-/* --- ESTILOS ANTIGOS (mantidos) --- */
+/* --- ESTILOS ANTERIORES (com pequenas modificações) --- */
+/* ... (todo o seu CSS anterior continua aqui) ... */
+
 #assistant-container {
   position: fixed;
   bottom: 20px;
@@ -69,14 +71,14 @@
   color: #fff;
   font-size: 14px;
   background: #101522;
-  display: flex; /* Adicionado para alinhar melhor as mensagens */
-  flex-direction: column; /* Adicionado para empilhar mensagens */
+  display: flex; 
+  flex-direction: column; 
 }
 
 .message {
   margin-bottom: 10px;
-  max-width: 85%; /* Limita a largura das mensagens */
-  word-wrap: break-word; /* Quebra palavras longas */
+  max-width: 85%;
+  word-wrap: break-word;
   padding: 8px 12px;
   border-radius: 10px;
 }
@@ -85,17 +87,16 @@
   text-align: right;
   color: #00d8ff;
   background-color: #1a2336;
-  align-self: flex-end; /* Alinha a mensagem do usuário à direita */
+  align-self: flex-end;
 }
 
 .bot {
   text-align: left;
   color: #e0e0e0;
   background-color: #2a3349;
-  align-self: flex-start; /* Alinha a mensagem do bot à esquerda */
+  align-self: flex-start;
 }
 
-/* NOVO: Estilo para imagens enviadas */
 .message img.user-image {
     max-width: 100%;
     border-radius: 8px;
@@ -104,6 +105,7 @@
 
 #assistant-input-area {
   display: flex;
+  align-items: center; /* Alinha os ícones verticalmente */
   border-top: 1px solid #1a2336;
   background: #0d1320;
 }
@@ -125,49 +127,61 @@
   cursor: pointer;
   font-weight: bold;
   transition: background 0.3s ease;
+  height: 100%; /* Faz o botão ocupar toda a altura */
 }
 
 #assistant-send:hover {
   background: #0095cc;
 }
 
-/* --- NOVOS ESTILOS --- */
 #assistant-new-chat {
   background: none;
   border: none;
   color: #00d8ff;
   font-size: 18px;
   cursor: pointer;
-  margin-left: auto; /* Empurra para a esquerda */
-  margin-right: 10px; /* Espaçamento */
+  margin-left: auto;
+  margin-right: 10px;
   font-weight: bold;
 }
 
-/* Botões de ícone na área de input */
-.icon-btn {
-    background: none;
-    border: none;
-    color: #a0a0a0;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 0 10px;
-    transition: color 0.3s ease;
-}
+/* --- ESTILOS NOVOS E MODIFICADOS --- */
 
-.icon-btn:hover {
-    color: #00d8ff;
-}
-
+/* Estilo para os botões de emoji e anexo */
 #assistant-emoji-btn, #assistant-attach-btn {
     background: none;
     border: none;
-    color: #a0a0a0;
-    font-size: 20px;
     cursor: pointer;
     padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0a0a0; /* Cor padrão do ícone SVG */
+}
+
+/* MODIFICADO: Estilo específico para o ícone SVG do anexo */
+#assistant-attach-btn svg {
+    transition: stroke 0.3s ease;
+    stroke: #a0a0a0; /* Cor da linha do ícone */
+}
+
+#assistant-attach-btn:hover svg {
+    stroke: #00d8ff; /* Cor da linha ao passar o mouse */
+}
+
+#assistant-emoji-btn {
+    font-size: 20px;
     transition: color 0.3s ease;
 }
 
-#assistant-emoji-btn:hover, #assistant-attach-btn:hover {
+#assistant-emoji-btn:hover {
     color: #00d8ff;
+}
+
+/* NOVO: Estilo para o painel de emojis */
+#emoji-picker-container {
+    position: absolute;
+    bottom: 50px; /* Posiciona acima da área de input */
+    left: 10px;
+    display: none; /* Começa escondido */
 }
