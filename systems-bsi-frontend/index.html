@@ -648,23 +648,33 @@ x-systems: <span class="accent">bsi</span>
   </section>
 
   <!-- PinguSys -->
-
   <div id="assistant-container">
+
     <div id="assistant-button">
       <img src="assets/img/pingusys.png" alt="PinguSys" />
     </div>
 
     <div id="assistant-chat">
       <div id="assistant-header">
-        <span>💬 PinguSys - Assistente SystemsBSI</span>
-        <button id="assistant-close">×</button>
+        <span>PinguSys - Assistente SystemsBSI</span>
+        <button id="assistant-new-chat" title="Nova Conversa">()</button>
+        <button id="assistant-close">X</button>
       </div>
+
       <div id="assistant-messages"></div>
+
       <div id="assistant-input-area">
+        <button id="assistant-emoji-btn" title="Emojis">😊</button>
+        <button id="assistant-attach-btn" title="Enviar mídia">📎</button>
+
+
+        <input type="file" id="assistant-file-input" accept="image/*" style="display: none;" />
+
         <input type="text" id="assistant-input" placeholder="Digite sua pergunta..." />
         <button id="assistant-send">Enviar</button>
       </div>
     </div>
+
   </div>
 
 

@@ -1,3 +1,4 @@
+/* --- ESTILOS ANTIGOS (mantidos) --- */
 #assistant-container {
   position: fixed;
   bottom: 20px;
@@ -6,7 +7,6 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-/* Botão com mascote */
 #assistant-button {
   width: 90px;
   height: 90px;
@@ -29,7 +29,6 @@
   max-width: 90px;
 }
 
-/* Janela de chat */
 #assistant-chat {
   display: none;
   flex-direction: column;
@@ -45,7 +44,6 @@
   overflow: hidden;
 }
 
-/* Cabeçalho */
 #assistant-header {
   background: #0a0f1a;
   color: #00d8ff;
@@ -64,7 +62,6 @@
   cursor: pointer;
 }
 
-/* Mensagens */
 #assistant-messages {
   flex: 1;
   padding: 10px;
@@ -72,23 +69,39 @@
   color: #fff;
   font-size: 14px;
   background: #101522;
+  display: flex; /* Adicionado para alinhar melhor as mensagens */
+  flex-direction: column; /* Adicionado para empilhar mensagens */
 }
 
 .message {
   margin-bottom: 10px;
+  max-width: 85%; /* Limita a largura das mensagens */
+  word-wrap: break-word; /* Quebra palavras longas */
+  padding: 8px 12px;
+  border-radius: 10px;
 }
 
 .user {
   text-align: right;
   color: #00d8ff;
+  background-color: #1a2336;
+  align-self: flex-end; /* Alinha a mensagem do usuário à direita */
 }
 
 .bot {
   text-align: left;
   color: #e0e0e0;
+  background-color: #2a3349;
+  align-self: flex-start; /* Alinha a mensagem do bot à esquerda */
 }
 
-/* Campo de entrada */
+/* NOVO: Estilo para imagens enviadas */
+.message img.user-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
 #assistant-input-area {
   display: flex;
   border-top: 1px solid #1a2336;
@@ -108,7 +121,7 @@
   background: #00d8ff;
   color: #0a0f1a;
   border: none;
-  padding: 10px 15px;
+  padding: 0 15px;
   cursor: pointer;
   font-weight: bold;
   transition: background 0.3s ease;
@@ -118,15 +131,43 @@
   background: #0095cc;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-  #assistant-button {
-    width: 70px;
-    height: 70px;
-  }
+/* --- NOVOS ESTILOS --- */
+#assistant-new-chat {
+  background: none;
+  border: none;
+  color: #00d8ff;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: auto; /* Empurra para a esquerda */
+  margin-right: 10px; /* Espaçamento */
+  font-weight: bold;
+}
 
-  #assistant-chat {
-    width: 280px;
-    height: 380px;
-  }
+/* Botões de ícone na área de input */
+.icon-btn {
+    background: none;
+    border: none;
+    color: #a0a0a0;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.icon-btn:hover {
+    color: #00d8ff;
+}
+
+#assistant-emoji-btn, #assistant-attach-btn {
+    background: none;
+    border: none;
+    color: #a0a0a0;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+#assistant-emoji-btn:hover, #assistant-attach-btn:hover {
+    color: #00d8ff;
 }
