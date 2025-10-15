@@ -1,9 +1,8 @@
-// Systems_BSI — Interações aprimoradas
 (() => {
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-  // Menu mobile
+
   const toggle = $('.nav-toggle');
   toggle?.addEventListener('click', () => {
     const isOpen = document.body.classList.toggle('nav-open');
@@ -14,15 +13,15 @@
     toggle?.setAttribute('aria-expanded', 'false');
   }));
 
-  // Ano do rodapé
+
   $('#year').textContent = new Date().getFullYear();
 
-  // Header shadow
+
   const header = $('.site-header');
   const onScroll = () => header.style.boxShadow = (window.scrollY > 8) ? '0 8px 24px rgba(0,0,0,.25)' : 'none';
   document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  // Counters
+
   const counters = $$('.stat-value');
   const animateCount = (el) => {
     const target = parseInt(el.dataset.count, 10) || 0;
@@ -37,7 +36,7 @@
     requestAnimationFrame(step);
   };
 
-  // Reveal on scroll
+
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -54,7 +53,6 @@
   $$('.reveal, .stat').forEach(el => io.observe(el));
 
 
-  // Partículas do hero
   const canvas = $('#particles');
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -75,7 +73,6 @@
     };
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
-      // gradient background glow subtle
       const grad = ctx.createRadialGradient(w * 0.8, h * 0.1, 20, w * 0.8, h * 0.1, Math.max(w, h));
       grad.addColorStop(0, 'rgba(0,204,255,0.08)');
       grad.addColorStop(1, 'rgba(0,0,0,0)');
@@ -92,7 +89,7 @@
         ctx.fillStyle = 'rgba(173, 235, 255, .7)';
         ctx.fill();
       }
-      // lines
+
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const a = particles[i], b = particles[j];
@@ -111,15 +108,14 @@
     resize(); draw();
   }
 
-  // Hover tilt básico nos tiles
   $$('.demo-tile').forEach(tile => {
     let rAF = null;
     const onMove = (e) => {
       const rect = tile.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const rx = ((y / rect.height) - 0.5) * -6; // rotateX
-      const ry = ((x / rect.width) - 0.5) * 8;   // rotateY
+      const rx = ((y / rect.height) - 0.5) * -6; 
+      const ry = ((x / rect.width) - 0.5) * 8;  
       if (rAF) cancelAnimationFrame(rAF);
       rAF = requestAnimationFrame(() => {
         tile.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
@@ -140,7 +136,7 @@
 
   const track = marquee.querySelector('.track');
   const GAP = parseFloat(getComputedStyle(marquee).getPropertyValue('--gap')) || 16;
-  const pps = parseFloat(marquee.dataset.pps || '90'); // pixels por segundo (ajuste a gosto)
+  const pps = parseFloat(marquee.dataset.pps || '90'); 
 
   const totalWidth = () => {
     const items = Array.from(track.children);
@@ -188,7 +184,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const track = document.querySelector('.marquee-track');
   if (track && track.children.length) {
-    track.innerHTML += track.innerHTML; // duplica os 3 perfis
+    track.innerHTML += track.innerHTML; 
   }
 });
 
@@ -213,38 +209,28 @@ marquee.addEventListener('mousemove', (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - marquee.offsetLeft;
-  const walk = (x - startX) * 2; // velocidade de arraste
+  const walk = (x - startX) * 2; 
   marquee.scrollLeft = scrollLeft - walk;
 });
 
-// --- Lógica para o Pop-up de Anúncio ---
 
-// Espera o conteúdo da página carregar completamente
 window.addEventListener('load', function () {
 
-  // Seleciona os elementos do pop-up
   const popupOverlay = document.getElementById('popup-overlay');
   const closePopupButton = document.getElementById('close-popup');
 
-  // Função para mostrar o pop-up
   function showPopup() {
     popupOverlay.classList.add('active');
   }
 
-  // Função para esconder o pop-up
   function hidePopup() {
     popupOverlay.classList.remove('active');
   }
 
-  // --- CONTROLE DE EXIBIÇÃO ---
-  // Mostra o pop-up após 3 segundos (3000 milissegundos)
   setTimeout(showPopup, 3000);
 
-  // --- EVENTOS ---
-  // Fecha o pop-up ao clicar no botão "X"
   closePopupButton.addEventListener('click', hidePopup);
 
-  // Opcional: Fecha o pop-up ao clicar fora da imagem (no overlay)
   popupOverlay.addEventListener('click', function (event) {
     if (event.target === popupOverlay) {
       hidePopup();

@@ -1,7 +1,5 @@
-/* Garante respiro para o footer */
 .section:last-of-type { padding-bottom: 48px; }
 
-/* Subnav interna */
 .subnav {
   margin-top: 12px;
   display: flex; flex-wrap: wrap; gap: 10px;
@@ -13,7 +11,7 @@
 }
 .subnav a:hover{ background:rgba(0,153,255,.08); border-color:rgba(0,204,255,.22); }
 
-/* Seções detalhadas */
+
 .details .details-head{ margin-bottom:14px; }
 .details .details-head h2{ margin:0 0 6px; }
 .details .details-grid{
@@ -41,10 +39,10 @@
   font-size: 0.9rem;
   color: rgba(255,255,255,0.55);
   padding: 12px 0;
-  background: #060b16; /* tom escuro para separar do footer */
+  background: #060b16;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .signature strong {
-  color: #00ccff; /* destaca RA Corporation com sua cor de marca */
+  color: #00ccff; 
 }

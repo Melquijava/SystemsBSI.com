@@ -1,4 +1,3 @@
-/* -------- GRID (mantém) -------- */
 .shop-grid{
   display:grid;
   grid-template-columns:repeat(4, minmax(0,1fr));
@@ -8,23 +7,21 @@
 @media (max-width:840px){ .shop-grid{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:560px){ .shop-grid{ grid-template-columns:1fr; } }
 
-/* -------- CARD (mantém) -------- */
 .product{
   display:flex; flex-direction:column; overflow:hidden; border-radius:16px;
   transition:transform .2s ease, box-shadow .2s ease;
 }
 .product:hover{ transform:translateY(-3px); box-shadow:0 14px 40px rgba(0,0,0,.35); }
 
-/* 👇 AQUI é quem manda no formato da imagem */
 .product .thumb{
   position:relative; display:block;
-  aspect-ratio: 1 / 1;          /* <- deixa QUADRADO */
+  aspect-ratio: 1 / 1;         
   background:rgba(255,255,255,.02);
 }
 .product .thumb img{
   width:100%; height:100%;
-  object-fit:cover; display:block;   /* preenche sem distorcer */
-  border-radius:12px;                 /* opcional */
+  object-fit:cover; display:block;  
+  border-radius:12px;                
 }
 
 .product .badge{
@@ -44,13 +41,10 @@
 
 .w-full{ width:100%; }
 
-/* Remova esta regra (não corresponde ao seu HTML):
-.product-card img { ... }
-*/
 
 @supports not (aspect-ratio: 1 / 1){
   .product .thumb{
-    height:0; padding-top:100%;      /* cria um quadrado */
+    height:0; padding-top:100%;     
     position:relative;
   }
   .product .thumb img{
@@ -72,7 +66,7 @@
 /* ===== HERO ===== */
 .shop-hero{
   position:relative;
-  padding:72px 0 32px; /* compacto para caber antes dos produtos */
+  padding:72px 0 32px; 
   overflow:hidden;
   isolation:isolate;
   background:radial-gradient(1200px 600px at 20% -10%, rgba(0,224,255,.08), transparent 60%),

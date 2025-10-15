@@ -662,13 +662,11 @@ x-systems: <span class="accent">bsi</span>
 
       <div id="assistant-messages"></div>
 
-      <!-- NOVO: Contêiner para o seletor de emojis -->
       <div id="emoji-picker-container"></div>
 
       <div id="assistant-input-area">
         <button id="assistant-emoji-btn" title="Emojis">😊</button>
 
-        <!-- MODIFICADO: Botão de anexo com ícone SVG -->
         <button id="assistant-attach-btn" title="Enviar mídia">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -685,11 +683,9 @@ x-systems: <span class="accent">bsi</span>
     </div>
   </div>
 
-  <!-- NOVO: Importa a biblioteca do seletor de emojis -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 
 
-  <!-- Contato -->
   <section id="contato" class="section">
     <div class="container grid-2">
       <div class="reveal">
@@ -726,7 +722,6 @@ x-systems: <span class="accent">bsi</span>
           <li><strong>Local:</strong> Brasil • Remoto</li>
         </ul>
 
-        <!-- Google Maps embed -->
         <div class="mini-map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38305.843585!2d-47.9292!3d-15.7801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3a258c1b4a2f%3A0x7dc12b5ff19f1a6!2sBras%C3%ADlia%20-%20DF!5e0!3m2!1spt-BR!2sbr!4v1692784492945!5m2!1spt-BR!2sbr"
@@ -781,7 +776,6 @@ x-systems: <span class="accent">bsi</span>
   </footer>
 
   <script>
-    // Função para animar contadores
     function animateCounter(el, target) {
       let count = 0;
       let increment = Math.ceil(target / 100);
@@ -795,14 +789,12 @@ x-systems: <span class="accent">bsi</span>
       }, 20);
     }
 
-    // Busca do backend PHP
-    fetch("./visitas.php")
+    fetch("https://backend-systems.up.railway.app//api/visitas")
       .then(res => res.json())
       .then(data => {
         const visitasEl = document.getElementById("contador");
         if (visitasEl) {
           visitasEl.setAttribute("data-count", data.visitas);
-          // Sua função animateCounter irá atualizar o valor visível
           animateCounter(visitasEl, data.visitas);
         }
       })
@@ -810,7 +802,6 @@ x-systems: <span class="accent">bsi</span>
         console.error("Erro ao buscar o contador:", error);
       });
 
-    // Anima os outros contadores estáticos
     document.querySelectorAll(".stat-value").forEach(el => {
       if (el.id !== "contador") {
         let target = parseInt(el.getAttribute("data-count"));
