@@ -778,7 +778,7 @@ x-systems: <span class="accent">bsi</span>
   <script>
     function animateCounter(el, target) {
       let count = 0;
-      let increment = Math.ceil(target / 100);
+      let increment = Math.ceil(target / 100) || 1;
       let interval = setInterval(() => {
         count += increment;
         if (count >= target) {
@@ -789,25 +789,29 @@ x-systems: <span class="accent">bsi</span>
       }, 20);
     }
 
-    fetch("https://systemsbsicom-production.up.railway.app/api/visitas")
-      .then(res => res.json())
-      .then(data => {
+    async function initializeCounters() {
+      try {
+
+        const response = await fetch("https://systemsbsicom-production.up.railway.app/api/visitas");
+        const data = await response.json();
+
         const visitasEl = document.getElementById("contador");
         if (visitasEl) {
           visitasEl.setAttribute("data-count", data.visitas);
-          animateCounter(visitasEl, data.visitas);
         }
-      })
-      .catch(error => {
+      } catch (error) {
         console.error("Erro ao buscar o contador:", error);
-      });
-
-    document.querySelectorAll(".stat-value").forEach(el => {
-      if (el.id !== "contador") {
-        let target = parseInt(el.getAttribute("data-count"));
-        animateCounter(el, target);
       }
-    });
+
+      document.querySelectorAll(".stat-value").forEach(el => {
+        const target = parseInt(el.getAttribute("data-count"));
+        if (!isNaN(target)) {
+          animateCounter(el, target);
+        }
+      });
+    }
+
+    initializeCounters();
   </script>
 
 </body>
