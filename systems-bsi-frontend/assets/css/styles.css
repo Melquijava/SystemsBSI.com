@@ -27,6 +27,10 @@ body {
   color: var(--text);
   background: var(--dark);
   line-height: 1.6;
+  -webkit-user-select: none; 
+  -moz-user-select: none;   
+  -ms-user-select: none;    
+  user-select: none;        
 }
 
 .noise {
