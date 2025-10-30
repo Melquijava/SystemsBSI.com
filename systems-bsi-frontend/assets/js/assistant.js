@@ -16,34 +16,35 @@ let attachedFile = null;
 
 
 button.addEventListener("click", () => { chat.style.display = "flex"; });
-closeBtn.addEventListener("click", () => { 
-    chat.style.display = "none"; 
-    emojiPickerContainer.style.display = 'none'; 
+closeBtn.addEventListener("click", () => {
+    chat.style.display = "none";
+    emojiPickerContainer.style.display = 'none';
 });
 
 sendBtn.addEventListener("click", sendMessage);
 input.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
 newChatBtn.addEventListener("click", () => {
-    messages.innerHTML = ''; 
-    attachedFile = null; 
+    messages.innerHTML = '';
+    attachedFile = null;
     appendMessage("👋 Nova conversa iniciada!", "bot");
 });
 attachBtn.addEventListener("click", () => { fileInput.click(); });
 fileInput.addEventListener("change", handleFileSelection);
 
-const picker = new EmojiPicker.Picker();
-emojiPickerContainer.appendChild(picker);
+if (emojiPickerContainer) {
+    const picker = new EmojiPicker.Picker();
+    emojiPickerContainer.appendChild(picker);
 
 
-emojiBtn.addEventListener('click', () => {
-  emojiPickerContainer.style.display = emojiPickerContainer.style.display === 'block' ? 'none' : 'block';
-});
+    emojiBtn.addEventListener('click', () => {
+        emojiPickerContainer.style.display = emojiPickerContainer.style.display === 'block' ? 'none' : 'block';
+    });
 
 
-picker.addEventListener('emoji-click', event => {
-  input.value += event.detail.emoji.unicode;
-});
-
+    picker.addEventListener('emoji-click', event => {
+        input.value += event.detail.emoji.unicode;
+    });
+}
 
 
 function handleFileSelection(event) {
@@ -118,13 +119,13 @@ function appendMessage(text, type, imageBase64 = null) {
         img.src = imageBase64;
         img.classList.add("user-image");
         div.appendChild(img);
-        if(text.includes("Você enviou a imagem:")) {
+        if (text.includes("Você enviou a imagem:")) {
             textNode.textContent = `Anexado: ${attachedFile.name}`;
         }
     }
-    
+
     messages.appendChild(div);
     messages.scrollTop = messages.scrollHeight;
-    
+
     return div;
 }

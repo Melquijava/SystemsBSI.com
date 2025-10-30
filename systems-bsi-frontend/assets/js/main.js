@@ -214,27 +214,27 @@ marquee.addEventListener('mousemove', (e) => {
 });
 
 
-window.addEventListener('load', function () {
-
+window.addEventListener('load', function() {
   const popupOverlay = document.getElementById('popup-overlay');
-  const closePopupButton = document.getElementById('close-popup');
 
-  function showPopup() {
-    popupOverlay.classList.add('active');
-  }
+  if (popupOverlay) {
+    const closePopupButton = document.getElementById('close-popup');
 
-  function hidePopup() {
-    popupOverlay.classList.remove('active');
-  }
-
-  setTimeout(showPopup, 3000);
-
-  closePopupButton.addEventListener('click', hidePopup);
-
-  popupOverlay.addEventListener('click', function (event) {
-    if (event.target === popupOverlay) {
-      hidePopup();
+    function showPopup() {
+      popupOverlay.classList.add('active');
     }
-  });
 
+    function hidePopup() {
+      popupOverlay.classList.remove('active');
+    }
+
+    setTimeout(showPopup, 3000);
+    closePopupButton.addEventListener('click', hidePopup);
+
+    popupOverlay.addEventListener('click', function(event) {
+      if (event.target === popupOverlay) {
+        hidePopup();
+      }
+    });
+  }
 });
